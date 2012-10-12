@@ -18,6 +18,7 @@
 			$sale->total = $_POST['Total'];
 			$sale->change = $_POST['Change'];
 			$sale->received = $_POST['CashReceived'];
+			$sale->order = $_POST['Order'];
 			$sale->time = date('Y-m-d H:i:s');
 
 			$sale->save();

@@ -88,8 +88,9 @@ $(function() {
 		var saleTotal = saleSubtotal * 100;
 		var cashReceivedValue = $("#cashReceived").val() * 100;
 		var changeDueValue = (cashReceivedValue - saleTotal);
+		var orderListJSON = $.toJSON(saleQueue);
 
-		$.post('?url=sales/create&ajax', {'CashReceived': cashReceivedValue, 'Total': saleTotal, 'Change': changeDueValue}, function(data) {
+		$.post('?url=sales/create&ajax', {'CashReceived': cashReceivedValue, 'Total': saleTotal, 'Change': changeDueValue, 'Order': orderListJSON}, function(data) {
 			$("#orderSuccessAlert").show();
 			$("#orderSuccessAlert").delay(400).fadeOut(1000);
 		});
