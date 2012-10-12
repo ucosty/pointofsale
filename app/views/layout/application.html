@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Point Of Sale</title>
+	<link rel="stylesheet" type="text/css" href="<?php print Templates::BaseURL(); ?>/public/style.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/sales.js"></script>
+</head>
+<body>
+	<div id="header">
+		<img src="<?php print Templates::BaseURL(); ?>/public/logo.png">
+		<ul>
+			<li><a href="?url=admin">Admin</a></li>
+			<li><a id="logout" href="#">Log Out</a></li>
+		</ul>
+	</div>
+
+	<div id="content">
+		<?php print Templates::yield() ?>
+	</div>
+
+	<div id="sidebar">
+		<h3>Current Order</h3>
+		<p id="saleNoItemsMessage">There are currently no items in this order.</p>
+		<ul id="saleItemQueue"></ul>
+
+		<div id="total" class="zero"><a href="#">$<span id="subtotalCurrency">0.00</span> &raquo;</a></div>
+	</div>
+
+	<div class="alert info" id="orderSuccessAlert">Order submitted successfully</div>
+</body>
+</html>
