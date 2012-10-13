@@ -1,8 +1,8 @@
 <?php Templates::StartBlock(); ?>
 	<link rel="stylesheet" type="text/css" href="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css">
-	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+
 	<script type="text/javascript">
 		$(function() {
 			$("#orderList").dataTable({"bFilter": false, "bLengthChange": false, "iDisplayLength": 15});
@@ -19,6 +19,19 @@
 				return false;
 			});
 
+			var newProductImageName = '';
+
+			var uploader = new qq.FileUploader({
+				element: $('#newProductImage')[0],
+				action: "?url=admin/newproductimage&ajax",
+				debug: true,
+				onComplete: function(id, filename, responseJSON) {
+					newProductImageName = 'uploads/' + responseJSON;
+					alert(responseJSON);
+					$("#imageUploadPlaceholder").html('<img src="<?php print Templates::BaseURL(); ?>/public/uploads/' + filename + '">');
+				}
+			});
+
 			$("#new-product").dialog({
 				autoOpen: false,
 	            height: 350,
@@ -32,7 +45,7 @@
 	            		var productName = $("#newProductName").val();
 	            		var productCost = $("#newProductCost").val();
 
-	            		$.post('?url=admin/createproduct&ajax', {'Name': productName, 'Cost': productCost}, function(data) {
+	            		$.post('?url=admin/createproduct&ajax', {'Name': productName, 'Cost': productCost, 'Image': newProductImageName}, function(data) {
 							$("#orderList").html(data);
 						});
 	            		$("#new-product").dialog("close");
@@ -41,6 +54,11 @@
 			});
 		});
 	</script>
+	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.ajaxfileupload.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+	
 <?php Templates::EndBlock('header'); ?>
 <div class="admin">
 	<div class="window">
@@ -65,7 +83,7 @@
 					<?php foreach($products as $i => $product): ?>
 					<tr id="product-<?php print $product->id; ?>">
 						<td><?php print $product->id; ?></td>
-						<td><img style="width:32px; height: 32px;" src="<?php print Templates::BaseURL(); ?>/public/images/<?php print $product->image; ?>"></td>
+						<td><img style="width:32px; height: 32px;" src="<?php print Templates::BaseURL(); ?>/public/<?php print $product->image; ?>"></td>
 						<td><?php print $product->name; ?></td>
 						<td>$<?php print $product->price(); ?></td>
 						<td>
@@ -95,7 +113,8 @@
 			</li>
 			<li>
 				<label>Product Image (128x128 pixels)</label>
-				<input id="newProductImage" class="text"  type="file" name="imageupload">
+				<ul id="newProductImage"></ul>
+				<div id="imageUploadPlaceholder"></div>
 			</li>
 		</ul>
 	</form>

@@ -207,6 +207,8 @@ br.clear { clear: both; }
 
 #content .sale ul li img {
 	display: block;
+	width: 128px;
+	height: 128px;
 }
 
 #content .sale ul li p {

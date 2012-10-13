@@ -6,7 +6,7 @@
 <div class="sale">
 	<ul>
 		<?php foreach($products as $i => $product): ?>
-			<li><img id="prod-<?php print $i + 1; ?>" data-value="<?php print $product->price(); ?>" src="<?php print Templates::BaseURL(); ?>/public/images/<?php print $product->image; ?>" alt="<?php print $product->name; ?>"><p>$<?php print $product->price(); ?></p><div class="badge"><?php print $i + 1; ?></div></li>
+			<li><img id="prod-<?php print $i + 1; ?>" data-value="<?php print $product->price(); ?>" src="<?php print Templates::BaseURL(); ?>/public/<?php print $product->image; ?>" alt="<?php print $product->name; ?>"><p>$<?php print $product->price(); ?></p><div class="badge"><?php print $i + 1; ?></div></li>
 		<?php endforeach; ?>		
 	</ul>
 </div>

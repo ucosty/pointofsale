@@ -30,6 +30,7 @@
 
 			$product->name = $_POST['Name'];
 			$product->cost = $_POST['Cost'] * 100;
+			$product->image = $_POST['Image'];
 
 			$product->save();
 
@@ -42,6 +43,17 @@
 		{
 			$product = Product::find_by_id($_POST['id']);
 			$product->delete();
+		}
+
+		public function newproductimage()
+		{
+			$uploader = new qqFileUploader(array(), 1024000);
+
+			// Call handleUpload() with the name of the folder, relative to PHP's getcwd()
+			$result = $uploader->handleUpload('public/uploads/');
+
+			// to pass data through iframe you will need to encode all html tags
+			echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 		}
 	}
 
