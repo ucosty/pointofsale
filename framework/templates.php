@@ -11,6 +11,8 @@
       // Default to yielding the main content
       if(!isset($var)) $var = 'content';
       
+      if(!isset(self::$content[$var])) return;
+      
       return self::$content[$var];
     }
     

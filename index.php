@@ -48,7 +48,9 @@
         if(method_exists($controller, "_{$action}")) {
             $action = "_{$action}";
         } else {
-            die("No such action '{$action}' in {$controller_class}");        
+            //if(!$_CONFIG['controller']['autoaction']) {
+                die("No such action '{$action}' in {$controller_class}");        
+            //}
         }
     }
     
