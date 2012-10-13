@@ -683,3 +683,88 @@ a.paginate_disabled_next:hover {
 .dataTables_paginate a {
 	background-image: none;
 }
+
+/******************************************************************************
+	Admin Panel jQuery Dialog overrides
+******************************************************************************/
+
+.ui-widget-overlay {
+	background: #000;
+	opacity: 0.6;
+}
+
+.ui-dialog {
+	font-size: 14px;
+	padding: 0;
+	border-radius: 0;
+	background: none;
+	border: none;
+}
+
+.ui-dialog-content {
+	background-color: #fff;
+}
+
+
+#new-product {
+	background-color: #fff;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	margin: 0;
+}
+
+.ui-dialog-titlebar {
+	background: #e1e1e1; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e1e1e1 0%, #969696 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e1e1e1), color-stop(100%,#969696)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e1e1e1 0%,#969696 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e1e1e1 0%,#969696 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e1e1e1 0%,#969696 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e1e1e1 0%,#969696 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1e1e1', endColorstr='#969696',GradientType=0 ); /* IE6-9 */
+
+	font-size: 14px;
+	color: #333;
+	text-shadow: #e1e1e1 1px 1px;
+	padding: 5px;
+
+	border-radius: 0;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	
+
+	border-top: 1px solid #fefefe;
+	border-bottom: 1px solid #404040;
+
+	text-align: center;
+}
+
+.ui-dialog form ul {
+	list-style: none;
+}
+
+.ui-dialog form ul li {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+}
+
+.ui-dialog form ul li:last-child {
+	border-bottom: none;
+}
+
+.ui-dialog form ul li label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: #333;
+}
+
+.ui-dialog form ul li input.text {
+	padding: 5px;
+}
