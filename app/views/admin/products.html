@@ -1,7 +1,8 @@
 <?php Templates::StartBlock(); ?>
 	<link rel="stylesheet" type="text/css" href="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css">
 	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.min.js"></script>
-
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$("#orderList").dataTable({"bFilter": false, "bLengthChange": false, "iDisplayLength": 15});
