@@ -26,7 +26,7 @@
 				<tbody>
 					<?php foreach($sales as $sale): ?>
 					<tr>
-						<td><?php print $sale->time->format('d/m/Y'); ?></td>
+						<td><?php print $sale->time->format('d/m/Y h:m'); ?></td>
 						<td><?php print format_currency($sale->total); ?></td>
 						<td><?php print format_currency($sale->received); ?></td>
 						<td><?php print format_currency($sale->change); ?></td>
