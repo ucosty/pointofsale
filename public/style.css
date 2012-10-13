@@ -512,7 +512,7 @@ br.clear { clear: both; }
 }
 
 #content .admin .buttonBar ul li a:hover {
-	background-color: #333;
+	background-color: rgba(0, 0, 0, 0.7);
 	color: #ddd;
 	text-shadow: none;
 }
