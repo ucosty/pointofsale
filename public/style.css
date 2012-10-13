@@ -301,6 +301,19 @@ br.clear { clear: both; }
 	text-align: center;
 }
 
+.window h2.noborder {
+	border-bottom: 0;
+
+	background: #e1e1e1; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e1e1e1 0%, #d2d2d2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e1e1e1), color-stop(100%,#d2d2d2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e1e1e1 0%,#d2d2d2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e1e1e1 0%,#d2d2d2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e1e1e1 0%,#d2d2d2 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e1e1e1 0%,#d2d2d2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1e1e1', endColorstr='#d2d2d2',GradientType=0 ); /* IE6-9 */
+}
+
 .window .windowContent {
 	background-color: #fff;
 }
@@ -454,21 +467,33 @@ br.clear { clear: both; }
 	min-width: 300px;
 }
 
+/******************************************************************************
+	Admin Panel Navigation
+******************************************************************************/
+
 #content .admin .buttonBar {
-	background-color: #eee;
-	border-bottom: 1px solid #ccc;
+	background: #d2d2d2; /* Old browsers */
+	background: -moz-linear-gradient(top,  #d2d2d2 0%, #969696 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2d2d2), color-stop(100%,#969696)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #d2d2d2 0%,#969696 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #d2d2d2 0%,#969696 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #d2d2d2 0%,#969696 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #d2d2d2 0%,#969696 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2d2d2', endColorstr='#969696',GradientType=0 ); /* IE6-9 */
+
+	border-bottom: 1px solid #707070;
 }
 
 #content .admin .buttonBar ul {
 	width: 303px;
 	margin: 0 auto;
 	list-style: none;
-	border-left: 1px solid #ddd;
+	border-left: 1px solid #888;
 	height: 70px;
 }
 
 #content .admin .buttonBar ul li {
-	border-right: 1px solid #ddd;
+	border-right: 1px solid #888;
 	float: left;
 	text-align: center;
 }
@@ -481,16 +506,180 @@ br.clear { clear: both; }
 	text-decoration: none;
 	font-size: 14px;
 	font-weight: bold;
-	text-shadow: 1px 1px #fff;
+	text-shadow: 1px 1px #ccc;
 }
 
 #content .admin .buttonBar ul li a:hover {
 	background-color: #333;
-	color: #eee;
+	color: #ddd;
 	text-shadow: none;
 }
 
 #content .admin .buttonBar ul li img {
 	display: inline-block;
 	margin: 10px 0 5px 0;
+}
+
+/******************************************************************************
+	Admin Panel Submenu
+******************************************************************************/
+
+#content .admin .submenu {
+	background-color: #ccc;
+	border-bottom: 1px solid #aaa;
+}
+
+#content .admin .submenu ul { 
+	list-style: none;
+}
+
+#content .admin .submenu ul li {
+	float: left;
+	margin: 10px;
+}
+
+#content .admin .submenu ul li a {
+	border-radius: 15px;
+	padding: 5px 15px;
+
+	color: #444;
+	font-weight: bold;
+	text-decoration: none;
+
+	border: 1px solid #aaa;
+
+	background: #eee; /* Old browsers */
+	background: -moz-linear-gradient(top,  #eee 0%, #aaa 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eee), color-stop(100%,#aaa)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #eee 0%,#aaa 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #eee 0%,#aaa 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #eee 0%,#aaa 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #eee 0%,#aaa 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aaa', endColorstr='#aaa',GradientType=0 ); /* IE6-9 */
+}
+
+#content .admin .submenu ul li a:active {
+	border: 1px solid #888;
+
+	background: #aaa; /* Old browsers */
+	background: -moz-linear-gradient(top,  #aaa 0%, #888 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aaa), color-stop(100%,#888)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #aaa 0%,#888 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #aaa 0%,#888 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #aaa 0%,#888 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #aaa 0%,#888 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aaa', endColorstr='#888',GradientType=0 ); /* IE6-9 */
+}
+
+#content .admin .submenu ul li a img {
+	position: relative;
+	top: 2px;
+	margin-left: 2px;
+}
+
+/******************************************************************************
+	Admin Panel Table
+******************************************************************************/
+
+#content .admin table {
+	border-bottom: 1px solid #ccc;
+	border-collapse: collapse;
+}
+
+#content .admin thead tr th
+ {
+	background-color: #eee;
+	border-bottom: 1px solid #ccc;
+	color: #333;
+	font-size: 14px;
+	padding: 10px 5px;
+}
+
+#content .admin thead tr th.sorting_asc,
+#content .admin thead tr th.sorting_desc {
+	background-color: #ddd;
+}
+
+#content .admin thead tr th:hover {
+	background-color: #ccc;
+}
+
+#content .admin thead tr th.sorting_asc:hover,
+#content .admin thead tr th.sorting_desc:hover {
+	background-color: #ddd;
+}
+
+#content .admin tbody tr td {
+	color: #20262b;
+	padding: 5px;
+	font-size: 14px;
+	padding: 10px 5px;
+	text-align: center;
+}
+
+#content .admin tbody tr td a {
+	color: #32393e;
+	font-weight: bold;
+}
+
+#content .admin tbody tr.odd td {
+	background-color: #dce5f5;
+}
+
+#content .admin tbody tr.odd td.sorting_1 {
+	background-color: #d4dded;
+	font-weight: bold;
+}
+
+#content .admin tbody tr.even td {
+	background-color: #f0f9ff;
+}
+
+#content .admin tbody tr.even td.sorting_1 {
+	background-color: #ebf3f9;
+	font-weight: bold;
+}
+
+#content .admin div#orderList_info {
+	font-size: 14px;
+	padding: 10px;
+	font-weight: bold;
+	color: #333;
+}
+
+#content .admin div#orderList_paginate a {
+	font-size: 14px;
+	padding: 10px;
+	font-weight: bold;
+	color: #444;
+}
+
+#content .admin div#orderList_paginate a:hover {
+	background-color: #ddd;
+}
+
+a.paginate_disabled_previous {
+	color: #ccc !important;
+}
+
+a.paginate_disabled_previous:hover {
+	background-color: #fff !important;
+	background: none !important;
+}
+
+a.paginate_disabled_next {
+	color: #ccc !important;
+}
+
+a.paginate_disabled_next:hover {
+	background-color: #fff !important;'
+	background: none !important;
+}
+
+#orderList_next {
+	color: #ccc;
+}
+
+.dataTables_paginate a {
+	background-image: none;
 }

@@ -1,9 +1,41 @@
+<?php Templates::StartBlock(); ?>
+	<link rel="stylesheet" type="text/css" href="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.css">
+
+	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#orderList").dataTable({"bFilter": false, "bLengthChange": false, "iDisplayLength": 15});
+		});
+	</script>
+<?php Templates::EndBlock('header'); ?>
 <div class="admin">
 	<div class="window">
-		<h2>Administration</h2>
+		<h2 class="noborder">Administration</h2>
 		<div class="windowContent">
 			<?php Templates::Fragment("buttonbar"); ?>
-			<p>Sales List</p>
+			<table id="orderList">
+				<thead>
+					<tr>
+						<th>Time</th>
+						<th>Order Total</th>
+						<th>Cash Received</th>
+						<th>Change Given</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($sales as $sale): ?>
+					<tr>
+						<td><?php print $sale->time->format('d/m/Y'); ?></td>
+						<td><?php print format_currency($sale->total); ?></td>
+						<td><?php print format_currency($sale->received); ?></td>
+						<td><?php print format_currency($sale->change); ?></td>
+						<td><a href="#">Show Order</a></td>
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+			<br class="clear">
 		</div>
 	</div>
 </div>

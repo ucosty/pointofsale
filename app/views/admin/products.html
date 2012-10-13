@@ -1,9 +1,46 @@
+<?php Templates::StartBlock(); ?>
+	<link rel="stylesheet" type="text/css" href="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.css">
+	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.min.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			$("#orderList").dataTable({"bFilter": false, "bLengthChange": false, "iDisplayLength": 15});
+		});
+	</script>
+<?php Templates::EndBlock('header'); ?>
 <div class="admin">
 	<div class="window">
-		<h2>Administration</h2>
+		<h2 class="noborder">Administration</h2>
 		<div class="windowContent">
 			<?php Templates::Fragment("buttonbar"); ?>
-			<p>Products List</p>
+			<div class="submenu">
+				<ul><li><a href="#">Add Product <img src="<?php print Templates::BaseURL(); ?>/public/images/add.png"></a></li></ul>
+				<br class="clear">
+			</div>
+			<table id="orderList">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Image</th>
+						<th>Product Name</th>
+						<th>Cost</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($products as $i => $product): ?>
+					<tr>
+						<td><?php print $i; ?></td>
+						<td><img style="width:32px; height: 32px;" src="<?php print Templates::BaseURL(); ?>/public/images/<?php print $product->image; ?>"></td>
+						<td><?php print $product->name; ?></td>
+						<td>$<?php print $product->price(); ?></td>
+						<td><a href="#">Edit</a> <a href="">Remove</a></td>
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+			<br class="clear">
+
 		</div>
 	</div>
 </div>
