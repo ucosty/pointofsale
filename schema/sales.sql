@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `cost` int(11) NOT NULL,
   `enabled` int(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `sales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `order` text CHARACTER SET utf8 NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -28,4 +28,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `is_admin` int(1) NOT NULL DEFAULT '0',
   `enabled` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+INSERT INTO `users` (`id`, `username`, `password`, `is_admin`, `enabled`) VALUES
+(1, 'admin', '$2a$12$fZhN652mSLYZEiXvOG5BrODc/mU44jKxCgttcA8vynZisGEkb/h3G', 1, 1);
