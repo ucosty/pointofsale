@@ -10,10 +10,14 @@
 <body>
 	<div id="header">
 		<a href="<?php print Templates::BaseURL(); ?>"><img src="<?php print Templates::BaseURL(); ?>/public/logo.png"></a>
+		<?php if(User::find_session()): ?>
 		<ul>
-			<li><a href="?url=admin">Admin</a></li>
-			<li><a id="logout" href="#">Log Out</a></li>
+			<?php if(User::is_admin()): ?>
+				<li><a href="<?php print Templates::BaseURL(); ?>/admin">Admin</a></li>
+			<?php endif; ?>
+			<li><a id="logout" href="<?php print Templates::BaseURL(); ?>/logout">Log Out</a></li>
 		</ul>
+		<?php endif; ?>
 	</div>
 
 	<?php print Templates::yield() ?>

@@ -7,7 +7,6 @@
 
 		}
 
-
 		public function sales()
 		{
 			// Retrieve all sales

@@ -2,6 +2,13 @@
 
 	class SalesController
 	{
+		public function __before_filter()
+		{
+			if(!User::find_session()) {
+				header("Location: " . Templates::BaseURL() . "/login");
+			}
+		}
+
 		// The index page
 		public function index()
 		{

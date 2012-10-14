@@ -67,6 +67,4 @@
     }
     
     Templates::RenderTemplateFallback();
-    
-    session_destroy();
 ?>

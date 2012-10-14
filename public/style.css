@@ -72,8 +72,23 @@ br.clear { clear: both; }
 ******************************************************************************/
 
 #loginWindow {
-	width: 600px;
+	width: 470px;
 	margin: 50px auto 0 auto;
+}
+
+#loginWindow ul li input {
+	padding: 5px;
+	margin-right: 15px;
+}
+
+#loginWindow ul li input.textbox {
+	border-radius: 5px;
+	border: 1px solid #999;
+}
+
+#loginWindow ul li input.login {
+	position: relative;
+	top: 23px;
 }
 
 /******************************************************************************
@@ -482,7 +497,7 @@ br.clear { clear: both; }
 	Admin Panel Navigation
 ******************************************************************************/
 
-#content .admin .buttonBar {
+.buttonBar {
 	background: #d2d2d2; /* Old browsers */
 	background: -moz-linear-gradient(top,  #d2d2d2 0%, #969696 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2d2d2), color-stop(100%,#969696)); /* Chrome,Safari4+ */
@@ -493,6 +508,15 @@ br.clear { clear: both; }
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2d2d2', endColorstr='#969696',GradientType=0 ); /* IE6-9 */
 
 	border-bottom: 1px solid #707070;
+}
+
+.buttonBar.rounded {
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 #content .admin .buttonBar ul {
