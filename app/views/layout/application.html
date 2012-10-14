@@ -16,17 +16,7 @@
 		</ul>
 	</div>
 
-	<div id="content">
-		<?php print Templates::yield() ?>
-	</div>
-
-	<div id="sidebar">
-		<h3>Current Order</h3>
-		<p id="saleNoItemsMessage">There are currently no items in this order.</p>
-		<ul id="saleItemQueue"></ul>
-
-		<div id="total" class="zero"><a href="#">$<span id="subtotalCurrency">0.00</span> &raquo;</a></div>
-	</div>
+	<?php print Templates::yield() ?>
 
 	<div class="alert info" id="orderSuccessAlert">Order submitted successfully</div>
 </body>

@@ -3,49 +3,59 @@
 	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.json-2.3.min.js"></script>
 <?php Templates::EndBlock('header'); ?>
 
-<div class="sale">
-	<ul>
-		<?php foreach($products as $i => $product): ?>
-			<li><img id="prod-<?php print $i + 1; ?>" data-value="<?php print $product->price(); ?>" src="<?php print Templates::BaseURL(); ?>/public/<?php print $product->image; ?>" alt="<?php print $product->name; ?>"><p>$<?php print $product->price(); ?></p><div class="badge"><?php print $i + 1; ?></div></li>
-		<?php endforeach; ?>		
-	</ul>
-</div>
+<div id="content">
+	<div class="sale">
+		<ul>
+			<?php foreach($products as $i => $product): ?>
+				<li><img id="prod-<?php print $i + 1; ?>" data-value="<?php print $product->price(); ?>" src="<?php print Templates::BaseURL(); ?>/public/<?php print $product->image; ?>" alt="<?php print $product->name; ?>"><p>$<?php print $product->price(); ?></p><div class="badge"><?php print $i + 1; ?></div></li>
+			<?php endforeach; ?>		
+		</ul>
+	</div>
 
-<div class="confirmation">
-	<div class="window">
-		<h2>Order Confirmation</h2>
-		<div class="windowContent">
-			<div class="voucherPanel">
-				<br><br><br>
+	<div class="confirmation">
+		<div class="window">
+			<h2>Order Confirmation</h2>
+			<div class="windowContent">
+				<div class="voucherPanel">
+					<br><br><br>
+				</div>
+
+				<form>
+					<ul class="paymentFlow">
+						<li>
+							<label>Order Total</label>
+							<input id="orderValue" class="bigtextbox" readonly="readonly">
+							<span class="next"><img src="<?php print Templates::BaseURL(); ?>/public/images/next.png"></span>
+						</li>
+						<li>
+							<label>Cash Received</label>
+							<input id="cashReceived" class="bigtextbox">
+							<span class="next"><img src="<?php print Templates::BaseURL(); ?>/public/images/next.png"></span>
+						</li>
+						<li>
+							<label>Change Due</label>
+							<input id="changeDue" class="bigtextbox" readonly="readonly">
+						</li>
+					</ul>
+					<br class="clear"> 
+					<hr>
+
+					<ul class="paymentButtons">
+						<li><a href="#" class="button confirm" id="paymentConfirm">Confirm Payment</a></li>
+						<li><a href="#" class="button back" id="paymentBack">Back</a></li>
+						<li><span>or</span><a href="#" class="button cancel" id="paymentCancel">Cancel</a></li>
+					</ul>
+					<br class="clear"> 
+				</form>
 			</div>
-
-			<form>
-				<ul class="paymentFlow">
-					<li>
-						<label>Order Total</label>
-						<input id="orderValue" class="bigtextbox" readonly="readonly">
-						<span class="next"><img src="<?php print Templates::BaseURL(); ?>/public/images/next.png"></span>
-					</li>
-					<li>
-						<label>Cash Received</label>
-						<input id="cashReceived" class="bigtextbox">
-						<span class="next"><img src="<?php print Templates::BaseURL(); ?>/public/images/next.png"></span>
-					</li>
-					<li>
-						<label>Change Due</label>
-						<input id="changeDue" class="bigtextbox" readonly="readonly">
-					</li>
-				</ul>
-				<br class="clear"> 
-				<hr>
-
-				<ul class="paymentButtons">
-					<li><a href="#" class="button confirm" id="paymentConfirm">Confirm Payment</a></li>
-					<li><a href="#" class="button back" id="paymentBack">Back</a></li>
-					<li><span>or</span><a href="#" class="button cancel" id="paymentCancel">Cancel</a></li>
-				</ul>
-				<br class="clear"> 
-			</form>
 		</div>
 	</div>
+</div>
+
+<div id="sidebar">
+	<h3>Current Order</h3>
+	<p id="saleNoItemsMessage">There are currently no items in this order.</p>
+	<ul id="saleItemQueue"></ul>
+
+	<div id="total" class="zero"><a href="#">$<span id="subtotalCurrency">0.00</span> &raquo;</a></div>
 </div>

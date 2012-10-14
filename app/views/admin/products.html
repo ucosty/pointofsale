@@ -25,17 +25,19 @@
 				element: $('#newProductImage')[0],
 				action: "?url=admin/newproductimage&ajax",
 				debug: true,
+				onError: function(id, fileName, reason) {
+					alert(reason)
+				},
 				onComplete: function(id, filename, responseJSON) {
-					newProductImageName = 'uploads/' + responseJSON;
-					alert(responseJSON);
+					newProductImageName = 'uploads/' + filename;
 					$("#imageUploadPlaceholder").html('<img src="<?php print Templates::BaseURL(); ?>/public/uploads/' + filename + '">');
 				}
 			});
 
 			$("#new-product").dialog({
 				autoOpen: false,
-	            height: 350,
-	            width: 460,
+	            height: 450,
+	            width: 560,
 	            modal: true,
 	            buttons: {
 	            	'Cancel': function() {
@@ -60,62 +62,67 @@
 
 	
 <?php Templates::EndBlock('header'); ?>
-<div class="admin">
-	<div class="window">
-		<h2 class="noborder">Administration</h2>
-		<div class="windowContent">
-			<?php Templates::Fragment("buttonbar"); ?>
-			<div class="submenu">
-				<ul><li><a href="#" id="addProduct">Add Product <img src="<?php print Templates::BaseURL(); ?>/public/images/add.png"></a></li></ul>
+<div id="content">
+	<div class="admin">
+		<div class="window">
+			<h2 class="noborder">Administration</h2>
+			<div class="windowContent">
+				<?php Templates::Fragment("buttonbar"); ?>
+				<div class="submenu">
+					<ul><li><a href="#" id="addProduct">Add Product <img src="<?php print Templates::BaseURL(); ?>/public/images/add.png"></a></li></ul>
+					<br class="clear">
+				</div>
+				<table id="orderList">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Image</th>
+							<th>Product Name</th>
+							<th>Cost</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach($products as $i => $product): ?>
+						<tr id="product-<?php print $product->id; ?>">
+							<td><?php print $product->id; ?></td>
+							<td><img style="width:32px; height: 32px;" src="<?php print Templates::BaseURL(); ?>/public/<?php print $product->image; ?>"></td>
+							<td><?php print $product->name; ?></td>
+							<td>$<?php print $product->price(); ?></td>
+							<td>
+								<a href="#" data-id="<?php print $product->id; ?>">Edit</a>
+								<a class="productRemove" href="#" data-id="<?php print $product->id; ?>">Remove</a>
+							</td>
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
 				<br class="clear">
-			</div>
-			<table id="orderList">
-				<thead>
-					<tr>
-						<th></th>
-						<th>Image</th>
-						<th>Product Name</th>
-						<th>Cost</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach($products as $i => $product): ?>
-					<tr id="product-<?php print $product->id; ?>">
-						<td><?php print $product->id; ?></td>
-						<td><img style="width:32px; height: 32px;" src="<?php print Templates::BaseURL(); ?>/public/<?php print $product->image; ?>"></td>
-						<td><?php print $product->name; ?></td>
-						<td>$<?php print $product->price(); ?></td>
-						<td>
-							<a href="#" data-id="<?php print $product->id; ?>">Edit</a>
-							<a class="productRemove" href="#" data-id="<?php print $product->id; ?>">Remove</a>
-						</td>
-					</tr>
-					<?php endforeach; ?>
-				</tbody>
-			</table>
-			<br class="clear">
 
+			</div>
 		</div>
 	</div>
-</div>
 
-<div id="new-product" title="New Product">
-	<form>
-		<ul>
-			<li>
-				<label>Product Name</label>
-				<input id="newProductName" class="text" name="productname">
-			</li>
-			<li>
-				<label>Cost</label>
-				<input id="newProductCost" class="text"  name="productname">
-			</li>
-			<li>
-				<label>Product Image (128x128 pixels)</label>
-				<ul id="newProductImage"></ul>
-				<div id="imageUploadPlaceholder"></div>
-			</li>
-		</ul>
-	</form>
+	<div id="new-product" title="New Product">
+		<form>
+			<ul>
+				<li>
+					<label>Product Name</label>
+					<input id="newProductName" class="text" name="productname">
+				</li>
+				<li>
+					<label>Cost</label>
+					<input id="newProductCost" class="text"  name="productname">
+				</li>
+				<li>
+					<label>Product Image (128x128 pixels)</label>
+					<ul id="newProductImage"></ul>
+					<div id="imageUploadPlaceholder"></div>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+<div id="sidebar">
+	<?php Templates::Fragment("salesinfo"); ?>
 </div>

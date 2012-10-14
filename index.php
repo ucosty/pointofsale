@@ -8,6 +8,7 @@
     require_once("framework/templates.php");
     require_once("framework/ActiveRecord.php");
     require_once("framework/fileuploads.php");
+    require_once("framework/hash.php");
 
     $map = new PathRouter();
 
