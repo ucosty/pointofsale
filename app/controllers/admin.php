@@ -55,6 +55,20 @@
 			// to pass data through iframe you will need to encode all html tags
 			echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 		}
+
+		public function users()
+		{
+			$users = User::all();
+			Templates::ActionTemplate(array("users" => $users));
+		}
+
+		public function adduser()
+		{
+			$user = new User();
+			$user->username = $_POST['username'];
+			$user->password = Hash::create($_POST['password']);
+			$user->save();
+		}
 	}
 
 ?>

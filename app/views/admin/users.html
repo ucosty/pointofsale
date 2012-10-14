@@ -1,0 +1,98 @@
+<?php Templates::StartBlock(); ?>
+	<link rel="stylesheet" type="text/css" href="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.css">
+
+	<script type="text/javascript">
+		$(function() {
+			$("#orderList").dataTable({"bFilter": false, "bLengthChange": false, "iDisplayLength": 15});
+
+			$("#addUser").click(function() {
+				$("#new-user").dialog("open");
+				return false;
+			});
+
+			$("#new-user").dialog({
+				autoOpen: false,
+	            height: 350,
+	            width: 400,
+	            modal: true,
+	            buttons: {
+	            	'Cancel': function() {
+	            		$("#new-user").dialog("close");
+	            	},
+	            	'Add User': function() {
+	            		var username = $("#newUserUsername").val();
+	            		var password = $("#newUserPassword").val();
+	            		var passwordVerify = $("#newUserPasswordVerify").val();
+
+	            		if(password == passwordVerify) {
+	            			$.post('?url=admin/adduser&ajax', {'username': username, 'password': password}, function(data) {
+	            				$("#new-user").dialog("close");
+	            			});
+	            		}
+	            	}
+	            }
+			});
+		});
+	</script>
+	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="<?php print Templates::BaseURL(); ?>/public/jquery.ajaxfileupload.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+<?php Templates::EndBlock('header'); ?>
+<div id="content">
+	<div class="admin">
+		<div class="window">
+			<h2 class="noborder">Administration</h2>
+			<div class="windowContent">
+				<?php Templates::Fragment("buttonbar"); ?>
+				<div class="submenu">
+					<ul><li><a href="#" id="addUser">Add User <img src="<?php print Templates::BaseURL(); ?>/public/images/add.png"></a></li></ul>
+					<br class="clear">
+				</div>
+				<table id="orderList">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Username</th>
+							<th>Administrator</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach($users as $user): ?>
+						<tr>
+							<td><?php print $user->id; ?></td>
+							<td><?php print $user->username; ?></td>
+							<td><?php print ($user->is_admin)? "True" : "False"; ?></td>
+							<td><a href="#">Password Reset</a> <a href="#">Delete</a></td>
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+				<br class="clear">
+			</div>
+		</div>
+	</div>
+	<div id="new-user" title="New User">
+		<form>
+			<ul>
+				<li>
+					<label>Username</label>
+					<input id="newUserUsername" class="text" name="username">
+				</li>
+				<li>
+					<label>Password</label>
+					<input id="newUserPassword" type="password" class="text" name="password">
+				</li>
+				<li>
+					<label>Verify Password</label>
+					<input id="newUserPasswordVerify" type="password" class="text" name="passwordverify">
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+<div id="sidebar">
+	<?php Templates::Fragment("salesinfo"); ?>
+</div>
