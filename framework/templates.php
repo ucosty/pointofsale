@@ -70,7 +70,14 @@
     
     static function Fragment($fragment)
     {
-        $file = "./app/views/".Params::controller()."/_{$fragment}.html";
+        if(strpos($fragment, '/') !== false) {
+            $parts = explode("/", $fragment);
+            $file = "./app/views/{$parts[0]}/_{$parts[1]}.html";
+        } else {
+            $file = "./app/views/".Params::controller()."/_{$fragment}.html";
+        }
+
+        
         
         if(file_exists($file)) {
             include($file);
