@@ -15,7 +15,7 @@
 			$(".productRemove").click(function() {
 				var productID = $(this).attr("data-id");
 				$("#product-" + productID).fadeOut();
-				$.post('?url=admin/removeproduct&ajax', {'id': productID});
+				$.post('<?php print Templates::BaseURL(); ?>/admin/products/delete?ajax', {'id': productID});
 				return false;
 			});
 
@@ -47,7 +47,7 @@
 	            		var productName = $("#newProductName").val();
 	            		var productCost = $("#newProductCost").val();
 
-	            		$.post('?url=admin/createproduct&ajax', {'Name': productName, 'Cost': productCost, 'Image': newProductImageName}, function(data) {
+	            		$.post('<?php print Templates::BaseURL(); ?>/admin/products/create?ajax', {'Name': productName, 'Cost': productCost, 'Image': newProductImageName}, function(data) {
 							$("#orderList").html(data);
 						});
 	            		$("#new-product").dialog("close");
