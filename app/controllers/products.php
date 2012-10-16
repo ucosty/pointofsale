@@ -31,8 +31,11 @@
 
 		public function delete()
 		{
-			$product = Product::find_by_id($_POST['id']);
-			$product->delete();
+			if($_SERVER['REQUEST_METHOD'] == "POST")
+			{
+				$product = Product::find_by_id($_POST['id']);
+				$product->delete();	
+			}
 		}
 	}
 
