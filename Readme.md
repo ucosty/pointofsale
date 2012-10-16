@@ -13,7 +13,7 @@ Installation
 Todo
 ----
 
-* Admin area
-* SQL schema file
+* Admin area general settings
+* Sales statistics in admin area
 * Bug testing/fixing
 * Everything else....
