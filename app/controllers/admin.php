@@ -30,11 +30,7 @@
 			echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 		}
 
-		public function users()
-		{
-			$users = User::all();
-			Templates::ActionTemplate(array("users" => $users));
-		}
+
 
 		public function adduser()
 		{

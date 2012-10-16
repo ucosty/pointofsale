@@ -2,6 +2,12 @@
 
 	class UsersController
 	{
+		public function index()
+		{
+			$users = User::all();
+			Templates::ActionTemplate(array("users" => $users));
+		}
+
 		public function login()
 		{
 			if($_SERVER['REQUEST_METHOD'] == "POST")
