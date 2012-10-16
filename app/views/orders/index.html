@@ -13,7 +13,7 @@
 		<div class="window">
 			<h2 class="noborder">Administration</h2>
 			<div class="windowContent">
-				<?php Templates::Fragment("buttonbar"); ?>
+				<?php Templates::Fragment("admin/buttonbar"); ?>
 				<table id="orderList">
 					<thead>
 						<tr>
@@ -25,12 +25,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach($sales as $sale): ?>
+						<?php foreach($orders as $order): ?>
 						<tr>
-							<td><?php print $sale->time->format('d/m/Y H:i'); ?></td>
-							<td><?php print format_currency($sale->total); ?></td>
-							<td><?php print format_currency($sale->received); ?></td>
-							<td><?php print format_currency($sale->change); ?></td>
+							<td><?php print $order->time->format('d/m/Y H:i'); ?></td>
+							<td><?php print format_currency($order->total); ?></td>
+							<td><?php print format_currency($order->received); ?></td>
+							<td><?php print format_currency($order->change); ?></td>
 							<td><a href="#">Show Order</a></td>
 						</tr>
 						<?php endforeach; ?>
