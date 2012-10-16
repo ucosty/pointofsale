@@ -490,7 +490,7 @@ br.clear { clear: both; }
 #content .admin {
 	padding-right: 20px;
 	margin: 20px;
-	min-width: 410px;
+	min-width: 510px;
 }
 
 /******************************************************************************
@@ -520,7 +520,7 @@ br.clear { clear: both; }
 }
 
 #content .admin .buttonBar ul {
-	width: 404px;
+	width: 505px;
 	margin: 0 auto;
 	list-style: none;
 	border-left: 1px solid #888;
