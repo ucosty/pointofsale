@@ -5,6 +5,9 @@
 
 	<script type="text/javascript">
 		$(function() {
+			var newProductImageName = '';
+			var editProductImageName = '';
+
 			$("#orderList").dataTable({"bFilter": false, "bLengthChange": false, "iDisplayLength": 15});
 
 			$("#addProduct").click(function() {
@@ -20,6 +23,8 @@
 				$.getJSON('<?php print Templates::BaseURL(); ?>/admin/products/show/' + productID + '?ajax', function(data) {
 					$("#editProductName").val(data['name']);
 					$("#editProductCost").val(data['cost']);
+					editProductImageName = data['image'];
+					$("#imageUploadPlaceholder2").html('<img src="<?php print Templates::BaseURL(); ?>/public/' + editProductImageName + '">');
 				});
 				
 
@@ -34,12 +39,11 @@
 				return false;
 			});
 
-			var newProductImageName = '';
-			var editProductImageName = '';
+			
 
 			var uploader = new qq.FileUploader({
 				element: $('#newProductImage')[0],
-				action: "?url=admin/newproductimage&ajax",
+				action: "<?php print Templates::BaseURL(); ?>/admin/products/image?ajax",
 				debug: true,
 				onError: function(id, fileName, reason) {
 					alert(reason)
