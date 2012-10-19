@@ -101,7 +101,7 @@ $(function() {
 	{
 		if($("#cashReceived").val() == '') return;
 		
-		var saleTotal = saleSubtotal * 100;
+		var saleTotal = (saleSubtotal * 100).toFixed(0);
 		var cashReceivedValue = $("#cashReceived").val() * 100;
 		var changeDueValue = (cashReceivedValue - saleTotal);
 		var orderListJSON = $.toJSON(saleQueue);
