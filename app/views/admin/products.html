@@ -15,12 +15,12 @@
 			$(".editProduct").click(function() {
 				$("#edit-product").dialog("open");
 				return false;
-			});
+			});			
 
 			$(".productRemove").click(function() {
 				var productID = $(this).attr("data-id");
 				$("#product-" + productID).fadeOut();
-				$.post('<?php print Templates::BaseURL(); ?>/admin/products/delete?ajax', {'id': productID});
+				$.post('?url=admin/removeproduct&ajax', {'id': productID});
 				return false;
 			});
 
@@ -52,9 +52,8 @@
 	            		var productName = $("#newProductName").val();
 	            		var productCost = $("#newProductCost").val();
 
-	            		$.post('<?php print Templates::BaseURL(); ?>/admin/products/create?ajax', {'Name': productName, 'Cost': productCost, 'Image': newProductImageName}, function(data) {
-							//$("#orderList").html(data);
-							window.location = "<?php print Templates::BaseURL(); ?>/admin/products/";
+	            		$.post('?url=admin/createproduct&ajax', {'Name': productName, 'Cost': productCost, 'Image': newProductImageName}, function(data) {
+							$("#orderList").html(data);
 						});
 	            		$("#new-product").dialog("close");
 	            	}
@@ -88,7 +87,7 @@
 		<div class="window">
 			<h2 class="noborder">Administration</h2>
 			<div class="windowContent">
-				<?php Templates::Fragment("admin/buttonbar"); ?>
+				<?php Templates::Fragment("buttonbar"); ?>
 				<div class="submenu">
 					<ul><li><a href="#" id="addProduct">Add Product <img src="<?php print Templates::BaseURL(); ?>/public/images/add.png"></a></li></ul>
 					<br class="clear">
@@ -111,7 +110,7 @@
 							<td><?php print $product->name; ?></td>
 							<td>$<?php print $product->price(); ?></td>
 							<td>
-								<a href="#" class="editProduct" data-id="<?php print $product->id; ?>">Edit</a>
+								<a class="editProduct" href="#" data-id="<?php print $product->id; ?>">Edit</a>
 								<a class="productRemove" href="#" data-id="<?php print $product->id; ?>">Remove</a>
 							</td>
 						</tr>
@@ -144,7 +143,7 @@
 		</form>
 	</div>
 
-	<div id="edit-product" title="New Product">
+	<div id="edit-product" title="Edit Product">
 		<form>
 			<input type="hidden" id="editProductId">
 			<ul>

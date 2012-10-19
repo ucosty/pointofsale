@@ -8,6 +8,14 @@
 			Templates::ActionTemplate(array("users" => $users));
 		}
 
+		public function create()
+		{
+			$user = new User();
+			$user->username = $_POST['username'];
+			$user->password = Hash::create($_POST['password']);
+			$user->save();
+		}
+
 		public function login()
 		{
 			if($_SERVER['REQUEST_METHOD'] == "POST")

@@ -7,18 +7,6 @@
 
 		}
 
-		public function sales()
-		{
-			// Retrieve all sales
-			$sales = Sale::all();
-
-			Templates::ActionTemplate(array("sales" => $sales));
-		}
-
-		public function removeproduct()
-		{
-		}
-
 		public function newproductimage()
 		{
 			$uploader = new qqFileUploader(array(), 1024000);
@@ -30,15 +18,6 @@
 			echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 		}
 
-
-
-		public function adduser()
-		{
-			$user = new User();
-			$user->username = $_POST['username'];
-			$user->password = Hash::create($_POST['password']);
-			$user->save();
-		}
 	}
 
 ?>

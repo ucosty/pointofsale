@@ -769,7 +769,7 @@ a.paginate_disabled_next:hover {
 }
 
 
-#new-product, #new-user {
+#new-product, #new-user, #edit-product {
 	background-color: #fff;
 }
 
