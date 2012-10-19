@@ -35,6 +35,7 @@
 			});
 
 			var newProductImageName = '';
+			var editProductImageName = '';
 
 			var uploader = new qq.FileUploader({
 				element: $('#newProductImage')[0],
@@ -46,6 +47,19 @@
 				onComplete: function(id, filename, responseJSON) {
 					newProductImageName = 'uploads/' + filename;
 					$("#imageUploadPlaceholder").html('<img src="<?php print Templates::BaseURL(); ?>/public/uploads/' + filename + '">');
+				}
+			});
+
+			var uploader2 = new qq.FileUploader({
+				element: $('#editProductImage')[0],
+				action: "<?php print Templates::BaseURL(); ?>/admin/products/image?ajax",
+				debug: true,
+				onError: function(id, fileName, reason) {
+					alert(reason)
+				},
+				onComplete: function(id, filename, responseJSON) {
+					editProductImageName = 'uploads/' + filename;
+					$("#imageUploadPlaceholder2").html('<img src="<?php print Templates::BaseURL(); ?>/public/uploads/' + filename + '">');
 				}
 			});
 
@@ -84,7 +98,7 @@
 	            		var productId = $("#editProductId").val();
 	            		var productName = $("#editProductName").val();
 	            		var productCost = $("#editProductCost").val();
-						$.post('<?php print Templates::BaseURL(); ?>/admin/products/update?ajax', {'id': productId, 'Name': productName, 'Cost': productCost}, function(data) {
+						$.post('<?php print Templates::BaseURL(); ?>/admin/products/update?ajax', {'id': productId, 'name': productName, 'cost': productCost, 'image': editProductImageName}, function(data) {
 							window.location = "<?php print Templates::BaseURL(); ?>/admin/products/";
 						});
 	            		$("#edit-product").dialog("close");
@@ -175,7 +189,7 @@
 				<li>
 					<label>Product Image (128x128 pixels)</label>
 					<ul id="editProductImage"></ul>
-					<div id="imageUploadPlaceholder"></div>
+					<div id="imageUploadPlaceholder2"></div>
 				</li>
 			</ul>
 		</form>
