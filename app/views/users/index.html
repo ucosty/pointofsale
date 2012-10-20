@@ -27,7 +27,7 @@
 	            		var passwordVerify = $("#newUserPasswordVerify").val();
 
 	            		if(password == passwordVerify) {
-	            			$.post('?url=admin/adduser&ajax', {'username': username, 'password': password}, function(data) {
+	            			$.post('<?php print Templates::BaseURL(); ?>/admin/users/create&ajax', {'username': username, 'password': password}, function(data) {
 	            				$("#new-user").dialog("close");
 	            			});
 	            		}
