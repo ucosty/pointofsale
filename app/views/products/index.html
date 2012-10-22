@@ -134,6 +134,7 @@
 							<th>Image</th>
 							<th>Product Name</th>
 							<th>Cost</th>
+							<th>Stock</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -144,6 +145,7 @@
 							<td><img style="width:32px; height: 32px;" src="<?php print Templates::BaseURL(); ?>/public/<?php print $product->image; ?>"></td>
 							<td><?php print $product->name; ?></td>
 							<td>$<?php print $product->price(); ?></td>
+							<td><?php print $product->stock; ?></td>
 							<td>
 								<a href="#" class="editProduct" data-id="<?php print $product->id; ?>">Edit</a>
 								<a class="productRemove" href="#" data-id="<?php print $product->id; ?>">Remove</a>
