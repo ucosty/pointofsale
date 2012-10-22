@@ -17,3 +17,9 @@ Todo
 * Sales statistics in admin area
 * Bug testing/fixing
 * Everything else....
+
+Planned Feature
+---------------
+
+* Basic inventory management
+* Item cost discounting
